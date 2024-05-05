@@ -1,0 +1,25 @@
+# Función para calcular el promedio de una lista de calificaciones
+def calcular_promedio(calificaciones):
+    total = sum(calificaciones)
+    promedio = total / len(calificaciones)
+    return promedio
+
+# Función principal
+def main():
+    # Lista para almacenar las calificaciones
+    calificaciones = []
+
+    # Solicitar al usuario que ingrese las 5 calificaciones
+    for i in range(5):
+        calificacion = float(input("Ingrese la calificación {}: ".format(i + 1)))
+        calificaciones.append(calificacion)
+
+    # Calcular el promedio de las calificaciones
+    promedio = calcular_promedio(calificaciones)
+
+    # Mostrar el promedio
+    print("El promedio de las calificaciones es:", promedio)
+
+# Llamar a la función principal
+if __name__ == "__main__":
+    main()
