@@ -11,3 +11,9 @@ temperatura_kelvin = temperatura_celsius + 273.15
 print("Temperatura en Celsius:", temperatura_celsius)
 print("Temperatura en Fahrenheit:", temperatura_fahrenheit)
 print("Temperatura en Kelvin:", temperatura_kelvin)
+
+# Programa en ejecucion
+# Ingrese la temperatura en grados Celsius: 34
+# Temperatura en Celsius: 34.0
+# Temperatura en Fahrenheit: 93.2
+# Temperatura en Kelvin: 307.15
