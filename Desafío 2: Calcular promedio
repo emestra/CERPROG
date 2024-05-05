@@ -23,3 +23,11 @@ def main():
 # Llamar a la función principal
 if __name__ == "__main__":
     main()
+
+# Resultado del programa al ejecutarse
+# Ingrese la calificación 1: 12
+# Ingrese la calificación 2: 6
+# Ingrese la calificación 3: 8
+# Ingrese la calificación 4: 4 
+# Ingrese la calificación 5: 7
+# El promedio de las calificaciones es: 7.4
