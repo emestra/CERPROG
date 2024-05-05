@@ -1,0 +1,13 @@
+# Solicitar al usuario que ingrese la temperatura en Celsius
+temperatura_celsius = float(input("Ingrese la temperatura en grados Celsius: "))
+
+# Convertir Celsius a Fahrenheit (F = C * 9/5 + 32)
+temperatura_fahrenheit = temperatura_celsius * 9/5 + 32
+
+# Convertir Celsius a Kelvin (K = C + 273.15)
+temperatura_kelvin = temperatura_celsius + 273.15
+
+# Mostrar los resultados
+print("Temperatura en Celsius:", temperatura_celsius)
+print("Temperatura en Fahrenheit:", temperatura_fahrenheit)
+print("Temperatura en Kelvin:", temperatura_kelvin)
