@@ -1,0 +1,23 @@
+# Función para verificar si un número es múltiplo de otro
+def es_multiplo(numero, divisor):
+    return numero % divisor == 0
+
+# Función principal
+def main():
+    # Solicitar al usuario que ingrese un número
+    numero = int(input("Ingrese un número: "))
+
+    # Verificar si el número es múltiplo de cada uno de los números mencionados
+    print("El número", numero, "es:")
+
+    print("Múltiplo de 2:", es_multiplo(numero, 2))
+    print("Múltiplo de 3:", es_multiplo(numero, 3))
+    print("Múltiplo de 5:", es_multiplo(numero, 5))
+    print("Múltiplo de 7:", es_multiplo(numero, 7))
+    print("Múltiplo de 9:", es_multiplo(numero, 9))
+    print("Múltiplo de 10:", es_multiplo(numero, 10))
+    print("Múltiplo de 11:", es_multiplo(numero, 11))
+
+# Llamar a la función principal
+if __name__ == "__main__":
+    main()
