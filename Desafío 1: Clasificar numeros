@@ -37,3 +37,11 @@ def main():
 # Llamar a la función principal
 if __name__ == "__main__":
     main()
+
+
+# Resultado al ajecutar el programa 
+# Ingrese el primer número: 2
+# Ingrese el segundo número: 8
+# Ingrese el tercer número: 5
+# Los números en orden ascendente son: 2.0 5.0 8.0
+
