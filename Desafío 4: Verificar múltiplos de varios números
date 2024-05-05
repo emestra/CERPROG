@@ -21,3 +21,14 @@ def main():
 # Llamar a la función principal
 if __name__ == "__main__":
     main()
+
+# Programa en ejecucion
+# Ingrese un número: 73897362
+# El número 73897362 es:
+# Múltiplo de 2: True
+# Múltiplo de 3: True
+# Múltiplo de 5: False
+# Múltiplo de 7: True
+# Múltiplo de 9: True
+# Múltiplo de 10: False
+# Múltiplo de 11: True
