@@ -1,0 +1,7 @@
+# Programa para saludar al usuario con su nombre y ciudad de origen
+# Solicitar el nombre al usuario
+nombre = input("Por favor, introduce tu nombre: ")
+# Solicitar la ciudad de origen al usuario
+ciudad = input("Por favor, introduce tu ciudad de origen: ")
+# Mostrar el saludo personalizado
+print(f"¡Hola, {nombre} de {ciudad}! ¡Es un placer conocerte!")
