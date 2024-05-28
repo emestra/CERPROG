@@ -1,0 +1,16 @@
+calificaciones = input("Ingrese todas las calificaciones separadas por comas: ")
+lista_calificaciones = calificaciones.split(',')
+suma_calificaciones = 0
+contador_asignaturas = 0
+for calificacion in lista_calificaciones:
+    calificacion = int(calificacion)
+    if calificacion < 1 o calificacion > 12:
+        print(f"La calificación {calificacion} no es válida y será omitida.")
+        continue
+    suma_calificaciones += calificacion
+    contador_asignaturas += 1
+if contador_asignaturas > 0:
+    promedio = suma_calificaciones / contador_asignaturas
+    print(f"El promedio de las calificaciones es: {promedio}")
+else:
+    print("No se ingresaron calificaciones válidas.")
