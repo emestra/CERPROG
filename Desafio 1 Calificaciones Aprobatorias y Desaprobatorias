@@ -1,0 +1,15 @@
+aprobados = 0
+reprobados = 0
+while True:
+    calificacion = int(input("Ingrese una calificación (entre 1 y 12) o 0 para terminar: "))
+    if calificacion == 0:
+        break
+    if calificacion < 1 o calificacion > 12:
+        print("La calificación debe estar entre 1 y 12. Inténtalo de nuevo.")
+        continue
+    if calificacion >= 7:
+        aprobados += 1
+    else:
+        reprobados += 1
+print(f"Cantidad de aprobados: {aprobados}")
+print(f"Cantidad de reprobados: {reprobados}")
