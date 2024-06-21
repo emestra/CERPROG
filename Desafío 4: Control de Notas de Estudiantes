@@ -1,0 +1,37 @@
+from collections import Counter
+import matplotlib.pyplot as plt
+
+def calcular_promedio(notas):
+    return sum(notas) / len(notas)
+
+def encontrar_extremos(notas):
+    return min(notas), max(notas)
+
+def nota_mas_repetida(notas):
+    contador = Counter(notas)
+    return contador.most_common(1)[0][0]
+
+def graficar_notas(notas):
+    contador = Counter(notas)
+    notas_unicas = list(contador.keys())
+    frecuencias = list(contador.values())
+    
+    plt.bar(notas_unicas, frecuencias)
+    plt.xlabel('Notas')
+    plt.ylabel('Frecuencia')
+    plt.title('Distribución de Notas')
+    plt.show()
+
+# Ejemplo de uso
+notas = [4.0, 3.5, 5.0, 4.5, 3.0, 4.0, 5.0, 4.0, 3.5, 4.0]
+
+promedio = calcular_promedio(notas)
+nota_min, nota_max = encontrar_extremos(notas)
+nota_repetida = nota_mas_repetida(notas)
+
+print(f"Promedio de las notas: {promedio:.2f}")
+print(f"Nota más baja: {nota_min}")
+print(f"Nota más alta: {nota_max}")
+print(f"Nota que más se repite: {nota_repetida}")
+
+graficar_notas(notas)
