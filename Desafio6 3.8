@@ -1,0 +1,44 @@
+def es_primo(n):
+    """
+    Verifica si un número es primo.
+    
+    Parámetros:
+    - n: Número a verificar
+    
+    Retorna:
+    True si es primo, False en caso contrario
+    """
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def contar_primos(lista):
+    """
+    Cuenta la cantidad de números primos en una lista.
+    
+    Parámetros:
+    - lista: Lista de números
+    
+    Retorna:
+    Cantidad de números primos en la lista
+    """
+    return sum(1 for num in lista if es_primo(num))
+
+def main():
+    """
+    Función principal que integra las funciones de verificación y conteo de primos.
+    """
+    numeros = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    
+    print("Verificación de números primos:")
+    for num in numeros:
+        print(f"{num} es primo: {es_primo(num)}")
+    
+    cantidad_primos = contar_primos(numeros)
+    print(f"\nCantidad de números primos en la lista: {cantidad_primos}")
+
+if __name__ == "__main__":
+    main()
