@@ -1,0 +1,19 @@
+def tienen_comun(lista1, lista2):
+    """
+    Verifica si dos listas tienen al menos un elemento en común.
+    
+    Parámetros:
+    - lista1: Primera lista
+    - lista2: Segunda lista
+    
+    Retorna:
+    True si tienen al menos un elemento en común, False en caso contrario
+    """
+    return bool(set(lista1) & set(lista2))
+
+# Prueba
+a = [1, 2, 3]
+b = [3, 4, 5]
+c = [6, 7, 8]
+print(tienen_comun(a, b))  # True
+print(tienen_comun(a, c))  # False
