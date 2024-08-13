@@ -1,0 +1,18 @@
+def suma_y_promedio(numeros):
+    """
+    Calcula la suma y el promedio de una lista de números.
+    
+    Parámetros:
+    - numeros: Lista de números
+    
+    Retorna:
+    Tupla con la suma y el promedio de los números
+    """
+    suma = sum(numeros)
+    promedio = suma / len(numeros) if numeros else 0
+    return suma, promedio
+
+# Prueba
+nums = [1, 2, 3, 4, 5]
+suma, promedio = suma_y_promedio(nums)
+print(f"Suma: {suma}, Promedio: {promedio}")
