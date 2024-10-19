@@ -1,0 +1,22 @@
+# Clase base Musico
+class Musico:
+    def instrumento(self):
+        pass
+
+# Subclase Guitarrista
+class Guitarrista(Musico):
+    def instrumento(self):
+        return "Guitarra"
+
+# Subclase Baterista
+class Baterista(Musico):
+    def instrumento(self):
+        return "Batería"
+
+# Instanciar objetos de las subclases
+guitarrista = Guitarrista()
+baterista = Baterista()
+
+# Demostrar el polimorfismo
+for musico in (guitarrista, baterista):
+    print(f"El instrumento del músico es: {musico.instrumento()}")
