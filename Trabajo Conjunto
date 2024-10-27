@@ -1,0 +1,100 @@
+import heapq
+
+class Grafo:
+    def __init__(self, num_nodos):
+        self.num_nodos = num_nodos
+        self.matriz_adyacencia = [[0] * num_nodos for _ in range(num_nodos)]
+
+    def agregar_nodo(self):
+        self.num_nodos += 1
+        for fila in self.matriz_adyacencia:
+            fila.append(0)
+        self.matriz_adyacencia.append([0] * self.num_nodos)
+
+    def eliminar_nodo(self, nodo):
+        if nodo >= self.num_nodos:
+            print("Error: Nodo fuera de rango.")
+            return
+        
+        self.matriz_adyacencia.pop(nodo)
+        for fila in self.matriz_adyacencia:
+            fila.pop(nodo)
+        self.num_nodos -= 1
+
+    def agregar_arista(self, nodo_origen, nodo_destino, peso=1):
+        if nodo_origen >= self.num_nodos or nodo_destino >= self.num_nodos:
+            print("Error: Nodo fuera de rango.")
+        else:
+            self.matriz_adyacencia[nodo_origen][nodo_destino] = peso
+
+    def eliminar_arista(self, nodo_origen, nodo_destino):
+        if nodo_origen >= self.num_nodos or nodo_destino >= self.num_nodos:
+            print("Error: Nodo fuera de rango.")
+        else:
+            self.matriz_adyacencia[nodo_origen][nodo_destino] = 0
+
+    def mostrar_matriz_adyacencia(self):
+        for fila in self.matriz_adyacencia:
+            print(fila)
+
+    def dijkstra(self, nodo_origen):
+        distancias = [float('inf')] * self.num_nodos
+        distancias[nodo_origen] = 0
+        padre = [-1] * self.num_nodos
+        cola_prioridad = [(0, nodo_origen)]
+        
+        while cola_prioridad:
+            distancia_actual, nodo_actual = heapq.heappop(cola_prioridad)
+            
+            if distancia_actual > distancias[nodo_actual]:
+                continue
+            
+            for vecino, peso in enumerate(self.matriz_adyacencia[nodo_actual]):
+                if peso > 0:
+                    distancia = distancia_actual + peso
+                    if distancia < distancias[vecino]:
+                        distancias[vecino] = distancia
+                        padre[vecino] = nodo_actual
+                        heapq.heappush(cola_prioridad, (distancia, vecino))
+        
+        return distancias, padre
+
+    def mostrar_camino_mas_corto(self, nodo_origen):
+        distancias, padre = self.dijkstra(nodo_origen)
+        for destino in range(self.num_nodos):
+            if destino != nodo_origen:
+                camino = []
+                actual = destino
+                while actual != -1:
+                    camino.append(actual)
+                    actual = padre[actual]
+                camino.reverse()
+                print(f"Camino más corto de {nodo_origen} a {destino}: {' -> '.join(map(str, camino))} con un coste de {distancias[destino]}")
+
+# Ejemplo de uso con 12 nodos y 19 aristas
+grafo = Grafo(12)
+grafo.agregar_arista(0, 1, 5)
+grafo.agregar_arista(0, 2, 3)
+grafo.agregar_arista(1, 3, 2)
+grafo.agregar_arista(1, 4, 8)
+grafo.agregar_arista(2, 4, 7)
+grafo.agregar_arista(3, 5, 1)
+grafo.agregar_arista(4, 5, 3)
+grafo.agregar_arista(4, 6, 6)
+grafo.agregar_arista(5, 7, 4)
+grafo.agregar_arista(6, 7, 2)
+grafo.agregar_arista(6, 8, 9)
+grafo.agregar_arista(7, 9, 1)
+grafo.agregar_arista(8, 9, 2)
+grafo.agregar_arista(8, 10, 4)
+grafo.agregar_arista(9, 10, 5)
+grafo.agregar_arista(10, 11, 3)
+grafo.agregar_arista(11, 0, 6)
+grafo.agregar_arista(11, 1, 7)
+grafo.agregar_arista(11, 2, 4)
+
+print("Matriz de Adyacencia:")
+grafo.mostrar_matriz_adyacencia()
+
+print("\nCaminos más cortos desde el nodo 0:")
+grafo.mostrar_camino_mas_corto(0)
