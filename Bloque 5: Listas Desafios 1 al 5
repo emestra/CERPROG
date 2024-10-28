@@ -1,0 +1,69 @@
+# Desafio 1
+
+# Programa para encontrar el mayor de tres números
+def encontrar_mayor(a, b, c):
+    if a == b == c:
+        return "Todos los números son iguales."
+    else:
+        mayor = max(a, b, c)
+        return f"El número mayor es {mayor}."
+
+# Ejemplo de uso
+a = int(input("Introduce el primer número: "))
+b = int(input("Introduce el segundo número: "))
+c = int(input("Introduce el tercer número: "))
+print(encontrar_mayor(a, b, c))
+
+
+# Desafio 2 
+
+# Programa para buscar un código de producto en una lista
+def buscar_codigo(lista, codigo):
+    if codigo in lista:
+        return f"El código {codigo} se encuentra en la posición {lista.index(codigo)}."
+    else:
+        return "Código no encontrado."
+
+# Ejemplo de uso
+lista_codigos = ["A123", "B456", "C789", "D012"]
+codigo = input("Introduce el código de producto: ")
+print(buscar_codigo(lista_codigos, codigo))
+
+
+# Desafio 3
+
+# Programa para eliminar duplicados de una lista
+def eliminar_duplicados(lista):
+    lista_sin_duplicados = list(set(lista))
+    return lista_sin_duplicados
+
+# Ejemplo de uso
+lista_numeros = [1, 2, 2, 3, 4, 4, 5]
+print("Lista original:", lista_numeros)
+print("Lista sin duplicados:", eliminar_duplicados(lista_numeros))
+
+
+# Desafio 4
+
+# Programa para sumar elementos de dos listas en posiciones correspondientes
+def sumar_listas(lista1, lista2):
+    longitud_max = max(len(lista1), len(lista2))
+    suma = [0] * longitud_max
+    for i in range(longitud_max):
+        if i < len(lista1):
+            suma[i] += lista1[i]
+        if i < len(lista2):
+            suma[i] += lista2[i]
+    return suma
+
+# Ejemplo de uso
+lista1 = [1, 2, 3]
+lista2 = [4, 5]
+print("Suma de las listas:", sumar_listas(lista1, lista2))
+
+
+# Desafio 5
+
+# Programa para crear una lista de potencias de 2 usando list comprehension
+potencias = [2**i for i in range(10)]
+print("Lista de potencias de 2:", potencias)
