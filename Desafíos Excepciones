@@ -1,0 +1,86 @@
+# Desafio 1
+def dividir_numeros():
+    try:
+        num1 = int(input("Introduce el primer número entero: "))
+        num2 = int(input("Introduce el segundo número entero: "))
+        resultado = num1 / num2
+        print(f"El resultado de la división es: {resultado}")
+    except ZeroDivisionError:
+        print("Error: No se puede dividir por cero.")
+    except ValueError:
+        print("Error: Por favor, introduce solo números enteros.")
+
+dividir_numeros()
+
+// Desafio 2
+
+def operaciones_lista(valores):
+    try:
+        suma = sum(valores)
+        promedio = suma / len(valores)
+        print(f"Suma: {suma}, Promedio: {promedio}")
+    except ZeroDivisionError:
+        print("Error: La lista está vacía.")
+    except TypeError:
+        print("Error: La lista debe contener solo números.")
+    except ValueError:
+        print("Error: Valor no válido en la lista.")
+
+valores = [1, 2, 3, 4, 5]
+operaciones_lista(valores)
+
+// # Desafio 3
+def factorial(n):
+    if not isinstance(n, int):
+        raise TypeError("El número debe ser un entero.")
+    if n < 0:
+        raise ValueError("El número debe ser positivo.")
+    if n > 1000:
+        raise OverflowError("El número es demasiado grande para ser procesado.")
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+try:
+    numero = int(input("Introduce un número entero positivo: "))
+    print(f"El factorial de {numero} es {factorial(numero)}")
+except (TypeError, ValueError, OverflowError) as e:
+    print(f"Error: {e}")
+
+/7 Desafios 4 
+class NegativeNumberError(Exception):
+    pass
+
+def raiz_cuadrada(n):
+    if n < 0:
+        raise NegativeNumberError("No se puede calcular la raíz cuadrada de un número negativo.")
+    return n ** 0.5
+
+try:
+    numero = float(input("Introduce un número para calcular su raíz cuadrada: "))
+    print(f"La raíz cuadrada de {numero} es {raiz_cuadrada(numero)}")
+except NegativeNumberError as e:
+    print(f"Error: {e}")
+except ValueError:
+    print("Error: Por favor, introduce un número válido.")
+
+// Desafios 5 
+def leer_archivo(nombre_archivo):
+    try:
+        archivo = open(nombre_archivo, 'r')
+        contenido = archivo.read()
+        print(contenido)
+    except FileNotFoundError:
+        print("Error: El archivo no existe.")
+    except IOError:
+        print("Error: No se pudo leer el archivo.")
+    finally:
+        try:
+            archivo.close()
+        except NameError:
+            pass
+
+nombre_archivo = "archivo.txt"
+leer_archivo(nombre_archivo)
+
