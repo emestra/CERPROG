@@ -1,0 +1,154 @@
+# Desafio 1
+
+from collections import deque
+
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.izq = None
+        self.der = None
+
+# Función para recorrer el árbol por niveles
+def recorrido_por_niveles(raiz):
+    if not raiz:
+        return
+    
+    cola = deque([raiz])
+    
+    while cola:
+        nodo = cola.popleft()
+        print(nodo.valor)
+        
+        if nodo.izq:
+            cola.append(nodo.izq)
+        if nodo.der:
+            cola.append(nodo.der)
+
+# Crear un árbol de ejemplo
+raiz = Nodo("Grado 12")
+raiz.izq = Nodo("Grado 11")
+raiz.der = Nodo("Grado 10")
+raiz.izq.izq = Nodo("Grado 9")
+raiz.izq.der = Nodo("Grado 8")
+raiz.der.izq = Nodo("Grado 7")
+raiz.der.der = Nodo("Grado 6")
+
+# Llamada a la función
+recorrido_por_niveles(raiz)
+
+
+
+# Desafio 2
+
+# Matriz de calificaciones (filas: estudiantes, columnas: materias)
+calificaciones = [
+    [85, 90, 78],  # Estudiante 1
+    [88, 92, 80],  # Estudiante 2
+    [84, 85, 88]   # Estudiante 3
+]
+
+# Función de búsqueda secuencial
+def buscar_calificacion(calificaciones, calificacion_buscar):
+    for i, estudiante in enumerate(calificaciones):
+        for j, calificacion in enumerate(estudiante):
+            if calificacion == calificacion_buscar:
+                return (i, j)  # Retorna el índice del estudiante y la materia
+    return None  # Calificación no encontrada
+
+# Buscar la calificación 92
+resultado = buscar_calificacion(calificaciones, 92)
+if resultado:
+    print(f"Calificación encontrada en el estudiante {resultado[0] + 1}, materia {resultado[1] + 1}")
+else:
+    print("Calificación no encontrada")
+
+
+# Desafio 3
+
+# Lista ordenada de nombres de estudiantes
+estudiantes = ["Ana", "Carlos", "Juan", "Luis", "María"]
+
+# Función de búsqueda binaria
+def busqueda_binaria(estudiantes, nombre_buscar):
+    bajo = 0
+    alto = len(estudiantes) - 1
+
+    while bajo <= alto:
+        medio = (bajo + alto) // 2
+        if estudiantes[medio] == nombre_buscar:
+            return medio  # Estudiante encontrado
+        elif estudiantes[medio] < nombre_buscar:
+            bajo = medio + 1
+        else:
+            alto = medio - 1
+
+    return -1  # Estudiante no encontrado
+
+# Buscar el estudiante "Luis"
+resultado = busqueda_binaria(estudiantes, "Luis")
+if resultado != -1:
+    print(f"Estudiante encontrado en la posición: {resultado}")
+else:
+    print("Estudiante no encontrado")
+
+
+# Desafio 4
+
+# Lista de estudiantes y sus promedios
+estudiantes = [("Ana", 85), ("Carlos", 90), ("Juan", 78), ("Luis", 88), ("María", 92)]
+
+# Función de ordenamiento por selección
+def ordenamiento_seleccion(estudiantes):
+    n = len(estudiantes)
+    for i in range(n):
+        max_idx = i
+        for j in range(i + 1, n):
+            if estudiantes[j][1] > estudiantes[max_idx][1]:
+                max_idx = j
+        estudiantes[i], estudiantes[max_idx] = estudiantes[max_idx], estudiantes[i]
+
+# Ordenar la lista de estudiantes por promedio
+ordenamiento_seleccion(estudiantes)
+print("Estudiantes ordenados por promedio:")
+for estudiante in estudiantes:
+    print(estudiante)
+
+
+# Desafio 5
+
+class Nodo:
+    def __init__(self, nombre, promedio):
+        self.nombre = nombre
+        self.promedio = promedio
+        self.izq = None
+        self.der = None
+
+# Función para insertar en el árbol binario de búsqueda
+def insertar(raiz, nombre, promedio):
+    if raiz is None:
+        return Nodo(nombre, promedio)
+    else:
+        if promedio < raiz.promedio:
+            raiz.izq = insertar(raiz.izq, nombre, promedio)
+        else:
+            raiz.der = insertar(raiz.der, nombre, promedio)
+    return raiz
+
+# Función para recorrer el árbol en inorden
+def inorden(raiz):
+    if raiz:
+        inorden(raiz.izq)
+        print(f"{raiz.nombre}: {raiz.promedio}")
+        inorden(raiz.der)
+
+# Lista de estudiantes y sus promedios
+estudiantes = [("Ana", 85), ("Carlos", 90), ("Juan", 78), ("Luis", 88), ("María", 92)]
+
+# Crear el árbol binario de búsqueda
+raiz = None
+for nombre, promedio in estudiantes:
+    raiz = insertar(raiz, nombre, promedio)
+
+# Recorrer el árbol en inorden
+print("Estudiantes en orden ascendente de rendimiento académico:")
+inorden(raiz)
