@@ -12,7 +12,7 @@ def dividir_numeros():
 
 dividir_numeros()
 
-// Desafio 2
+# Desafio 2
 
 def operaciones_lista(valores):
     try:
@@ -29,7 +29,8 @@ def operaciones_lista(valores):
 valores = [1, 2, 3, 4, 5]
 operaciones_lista(valores)
 
-// # Desafio 3
+# Desafio 3
+
 def factorial(n):
     if not isinstance(n, int):
         raise TypeError("El número debe ser un entero.")
@@ -48,7 +49,7 @@ try:
 except (TypeError, ValueError, OverflowError) as e:
     print(f"Error: {e}")
 
-/7 Desafios 4 
+# Desafios 4 
 class NegativeNumberError(Exception):
     pass
 
@@ -65,7 +66,7 @@ except NegativeNumberError as e:
 except ValueError:
     print("Error: Por favor, introduce un número válido.")
 
-// Desafios 5 
+# Desafios 5 
 def leer_archivo(nombre_archivo):
     try:
         archivo = open(nombre_archivo, 'r')
