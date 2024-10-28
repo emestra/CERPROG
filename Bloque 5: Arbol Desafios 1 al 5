@@ -1,0 +1,146 @@
+# Desafio 1
+
+class Nodo:
+    def __init__(self, key):
+        self.izq = None
+        self.der = None
+        self.val = key
+
+# Crear el nodo raíz
+raiz = Nodo(1)
+
+# Añadir nodos hijos
+raiz.izq = Nodo(2)
+raiz.der = Nodo(3)
+
+# Añadir nodos hijos al nodo izquierdo del raíz
+raiz.izq.izq = Nodo(4)
+raiz.izq.der = Nodo(5)
+
+# Añadir nodos hijos al nodo derecho del raíz
+raiz.der.izq = Nodo(6)
+raiz.der.der = Nodo(7)
+
+# Añadir nodos hijos al nodo hijo derecho del hijo izquierdo del raíz
+raiz.izq.der.izq = Nodo(8)
+raiz.izq.der.der = Nodo(9)
+
+# Añadir nodos hijos al nodo hijo derecho del hijo derecho del raíz
+raiz.der.der.izq = Nodo(10)
+raiz.der.der.der = Nodo(11)
+
+def print_preorder(raiz):
+    if raiz:
+        print(raiz.val, end=" ")
+        print_preorder(raiz.izq)
+        print_preorder(raiz.der)
+
+print_preorder(raiz)  # Salida esperada: 1 2 4 5 8 9 3 6 7 10 11
+
+# Desafio 2
+
+def suma_inorder(raiz):
+    if raiz is None:
+        return 0
+    return suma_inorder(raiz.izq) + raiz.val + suma_inorder(raiz.der)
+
+# Calcular la suma de los valores de los nodos en inorden
+suma_total = suma_inorder(raiz)
+print(f"La suma total de los valores en el árbol es: {suma_total}")  # Salida esperada: 66
+
+# Desafio 3
+
+
+def max_postorder(raiz):
+    if raiz is None:
+        return float('-inf')
+    
+    # Recorrer el subárbol izquierdo y derecho
+    max_izq = max_postorder(raiz.izq)
+    max_der = max_postorder(raiz.der)
+    
+    # Devolver el máximo valor entre el nodo actual y los valores máximos de los subárboles izquierdo y derecho
+    return max(raiz.val, max_izq, max_der)
+
+# Encontrar el valor máximo en el recorrido postorden
+max_valor = max_postorder(raiz)
+print(f"El valor máximo encontrado en el recorrido postorden es: {max_valor}")  # Salida esperada: 11
+
+# Desafio 4
+
+
+def insertar(raiz, key):
+    if raiz is None:
+        return Nodo(key)
+    else:
+        if key < raiz.val:
+            raiz.izq = insertar(raiz.izq, key)
+        else:
+            raiz.der = insertar(raiz.der, key)
+    return raiz
+
+def buscar(raiz, key):
+    if raiz is None or raiz.val == key:
+        return raiz is not None
+    if key < raiz.val:
+        return buscar(raiz.izq, key)
+    return buscar(raiz.der, key)
+
+# Conjunto de números enteros únicos
+numeros = [20, 10, 30, 5, 15, 25, 35]
+
+# Construir el árbol de búsqueda binaria
+raiz = None
+for num in numeros:
+    raiz = insertar(raiz, num)
+
+# Buscar un número dado en el árbol
+numero_a_buscar = 15
+existe = buscar(raiz, numero_a_buscar)
+print(f"El número {numero_a_buscar} {'existe' if existe else 'no existe'} en el árbol.")  # Salida esperada: El número 15 existe en el árbol.
+
+
+# Desafio 5
+
+def construir_arbol_expresion(expresion):
+    def es_operador(c):
+        return c in '+-*/'
+    
+    def construir_arbol(tokens):
+        stack = []
+        for token in tokens:
+            if not es_operador(token):
+                nodo = Nodo(int(token))
+                stack.append(nodo)
+            else:
+                nodo = Nodo(token)
+                nodo.der = stack.pop()
+                nodo.izq = stack.pop()
+                stack.append(nodo)
+        return stack[0]
+    
+    tokens = expresion.split()
+    return construir_arbol(tokens)
+
+def evaluar_arbol(raiz):
+    if raiz is None:
+        return 0
+    if raiz.izq is None and raiz.der is None:
+        return raiz.val
+    izq_valor = evaluar_arbol(raiz.izq)
+    der_valor = evaluar_arbol(raiz.der)
+    if raiz.val == '+':
+        return izq_valor + der_valor
+    elif raiz.val == '-':
+        return izq_valor - der_valor
+    elif raiz.val == '*':
+        return izq_valor * der_valor
+    elif raiz.val == '/':
+        return izq_valor / der_valor
+
+# Prueba del programa con la expresión "5 + 3 * 4"
+expresion = "5 + 3 * 4"
+arbol_expresion = construir_arbol_expresion(expresion)
+resultado = evaluar_arbol(arbol_expresion)
+print(f"El resultado de la expresión '{expresion}' es: {resultado}")  # Salida esperada: 17
+
