@@ -1,0 +1,80 @@
+#Desafio 1
+
+def agregar_prestamo(nombre_libro, nombre_prestatario, fecha_prestamo):
+    with open("prestamos.txt", "a") as archivo:
+        archivo.write(f"{nombre_libro}, {nombre_prestatario}, {fecha_prestamo}\n")
+
+# Ejemplo
+agregar_prestamo("El Señor de los Anillos", "Juan Pérez", "28-10-2024")
+
+
+# Desafio 2
+
+def buscar_libros_por_autor(nombre_archivo, autor):
+    encontrado = False
+    with open(nombre_archivo, "r") as archivo:
+        for linea in archivo:
+            if autor in linea:
+                print(linea.strip())
+                encontrado = True
+    if not encontrado:
+        print(f"No se encontraron libros de {autor}.")
+
+# Ejemplo de uso
+buscar_libros_por_autor("libros.txt", "J.R.R. Tolkien")
+
+# Desafio 3 
+
+import csv
+
+def actualizar_inventario(nombre_archivo, titulo_libro, nuevas_copias):
+    filas = []
+    with open(nombre_archivo, "r") as archivo_csv:
+        lector_csv = csv.reader(archivo_csv)
+        for fila in lector_csv:
+            if fila[0] == titulo_libro:
+                fila[2] = nuevas_copias
+            filas.append(fila)
+    
+    with open(nombre_archivo, "w", newline="") as archivo_csv:
+        escritor_csv = csv.writer(archivo_csv)
+        escritor_csv.writerows(filas)
+
+# Ejemplo de uso
+actualizar_inventario("inventario.csv", "El Hobbit", "10")
+
+
+# Desafio 4 
+
+def eliminar_prestamo(nombre_libro):
+    prestamos = []
+    with open("prestamos.txt", "r") as archivo:
+        prestamos = archivo.readlines()
+    
+    with open("prestamos.txt", "w") as archivo:
+        for prestamo in prestamos:
+            if nombre_libro not in prestamo:
+                archivo.write(prestamo)
+
+# Ejemplo de uso
+eliminar_prestamo("El Señor de los Anillos")
+
+
+# Desafio 5 
+
+
+from collections import Counter
+import re
+
+def contar_palabras_comunes(nombre_archivo):
+    with open(nombre_archivo, "r") as archivo:
+        texto = archivo.read().lower()
+        palabras = re.findall(r'\b\w+\b', texto)
+        contador = Counter(palabras)
+        comunes = contador.most_common(5)
+        for palabra, frecuencia in comunes:
+            print(f"{palabra}: {frecuencia}")
+
+# Ejemplo de uso
+contar_palabras_comunes("libros.txt")
+
