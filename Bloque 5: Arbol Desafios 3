@@ -1,0 +1,23 @@
+# Desafio 3
+
+class Nodo:
+    def __init__(self, val=0, izq=None, der=None):
+        self.val = val
+        self.izq = izq
+        self.der = der
+
+def max_postorder(raiz):
+    if raiz is None:
+        return float('-inf')
+    
+    # Recorrer el subárbol izquierdo y derecho
+    max_izq = max_postorder(raiz.izq)
+    max_der = max_postorder(raiz.der)
+    
+    # Devolver el máximo valor entre el nodo actual y los valores máximos de los subárboles izquierdo y derecho
+    return max(raiz.val, max_izq, max_der)
+
+# Ejemplo de uso
+raiz = Nodo(1, Nodo(2, Nodo(4), Nodo(5)), Nodo(3, Nodo(6), Nodo(7)))
+max_valor = max_postorder(raiz)
+print(f"El valor máximo encontrado en el recorrido postorden es: {max_valor}")  # Salida esperada: 7
