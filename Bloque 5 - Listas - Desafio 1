@@ -1,0 +1,15 @@
+# Desafio 1
+
+# Programa para encontrar el mayor de tres números
+def encontrar_mayor(a, b, c):
+    if a == b == c:
+        return "Todos los números son iguales."
+    else:
+        mayor = max(a, b, c)
+        return f"El número mayor es {mayor}."
+
+# Ejemplo de uso
+a = int(input("Introduce el primer número: "))
+b = int(input("Introduce el segundo número: "))
+c = int(input("Introduce el tercer número: "))
+print(encontrar_mayor(a, b, c))
