@@ -1,0 +1,35 @@
+from collections import deque
+
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.izq = None
+        self.der = None
+
+# Función para recorrer el árbol por niveles
+def recorrido_por_niveles(raiz):
+    if not raiz:
+        return
+    
+    cola = deque([raiz])
+    
+    while cola:
+        nodo = cola.popleft()
+        print(nodo.valor)
+        
+        if nodo.izq:
+            cola.append(nodo.izq)
+        if nodo.der:
+            cola.append(nodo.der)
+
+# Crear un árbol de ejemplo
+raiz = Nodo("Grado 12")
+raiz.izq = Nodo("Grado 11")
+raiz.der = Nodo("Grado 10")
+raiz.izq.izq = Nodo("Grado 9")
+raiz.izq.der = Nodo("Grado 8")
+raiz.der.izq = Nodo("Grado 7")
+raiz.der.der = Nodo("Grado 6")
+
+# Llamada a la función
+recorrido_por_niveles(raiz)
