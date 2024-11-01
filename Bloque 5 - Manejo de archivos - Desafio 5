@@ -1,0 +1,17 @@
+# Desafio 5 
+
+
+from collections import Counter
+import re
+
+def contar_palabras_comunes(nombre_archivo):
+    with open(nombre_archivo, "r") as archivo:
+        texto = archivo.read().lower()
+        palabras = re.findall(r'\b\w+\b', texto)
+        contador = Counter(palabras)
+        comunes = contador.most_common(5)
+        for palabra, frecuencia in comunes:
+            print(f"{palabra}: {frecuencia}")
+
+# Ejemplo de uso
+contar_palabras_comunes("libros.txt")
