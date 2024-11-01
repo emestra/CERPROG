@@ -1,0 +1,16 @@
+# Desafio 2
+
+def operaciones_lista(valores):
+    try:
+        suma = sum(valores)
+        promedio = suma / len(valores)
+        print(f"Suma: {suma}, Promedio: {promedio}")
+    except ZeroDivisionError:
+        print("Error: La lista está vacía.")
+    except TypeError:
+        print("Error: La lista debe contener solo números.")
+    except ValueError:
+        print("Error: Valor no válido en la lista.")
+
+valores = [1, 2, 3, 4, 5]
+operaciones_lista(valores)
