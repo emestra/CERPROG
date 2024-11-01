@@ -1,0 +1,35 @@
+class Nodo:
+    def __init__(self, val):
+        self.val = val
+        self.izq = None
+        self.der = None
+
+def insertar(raiz, key):
+    if raiz is None:
+        return Nodo(key)
+    else:
+        if key < raiz.val:
+            raiz.izq = insertar(raiz.izq, key)
+        else:
+            raiz.der = insertar(raiz.der, key)
+    return raiz
+
+def buscar(raiz, key):
+    if raiz is None or raiz.val == key:
+        return raiz is not None
+    if key < raiz.val:
+        return buscar(raiz.izq, key)
+    return buscar(raiz.der, key)
+
+# Conjunto de números enteros únicos
+numeros = [20, 10, 30, 5, 15, 25, 35]
+
+# Construir el árbol de búsqueda binaria
+raiz = None
+for num in numeros:
+    raiz = insertar(raiz, num)
+
+# Buscar un número dado en el árbol
+numero_a_buscar = 15
+existe = buscar(raiz, numero_a_buscar)
+print(f"El número {numero_a_buscar} {'existe' if existe else 'no existe'} en el árbol.")  # Salida esperada: El número 15 existe en el árbol.
