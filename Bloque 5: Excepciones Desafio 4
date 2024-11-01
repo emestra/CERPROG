@@ -1,0 +1,15 @@
+class NegativeNumberError(Exception):
+    pass
+
+def raiz_cuadrada(n):
+    if n < 0:
+        raise NegativeNumberError("No se puede calcular la raíz cuadrada de un número negativo.")
+    return n ** 0.5
+
+try:
+    numero = float(input("Introduce un número para calcular su raíz cuadrada: "))
+    print(f"La raíz cuadrada de {numero} es {raiz_cuadrada(numero)}")
+except NegativeNumberError as e:
+    print(f"Error: {e}")
+except ValueError:
+    print("Error: Por favor, introduce un número válido.")
