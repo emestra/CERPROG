@@ -1,0 +1,11 @@
+# Desafio 3
+
+# Programa para eliminar duplicados de una lista
+def eliminar_duplicados(lista):
+    lista_sin_duplicados = list(set(lista))
+    return lista_sin_duplicados
+
+# Ejemplo de uso
+lista_numeros = [1, 2, 2, 3, 4, 4, 5]
+print("Lista original:", lista_numeros)
+print("Lista sin duplicados:", eliminar_duplicados(lista_numeros))
