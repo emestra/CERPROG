@@ -1,0 +1,17 @@
+def factorial(n):
+    if not isinstance(n, int):
+        raise TypeError("El número debe ser un entero.")
+    if n < 0:
+        raise ValueError("El número debe ser positivo.")
+    if n > 1000:
+        raise OverflowError("El número es demasiado grande para ser procesado.")
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+try:
+    numero = int(input("Introduce un número entero positivo: "))
+    print(f"El factorial de {numero} es {factorial(numero)}")
+except (TypeError, ValueError, OverflowError) as e:
+    print(f"Error: {e}")
