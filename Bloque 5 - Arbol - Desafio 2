@@ -1,0 +1,23 @@
+class Nodo:
+    def __init__(self, val):
+        self.val = val
+        self.izq = None
+        self.der = None
+
+def suma_inorder(raiz):
+    if raiz is None:
+        return 0
+    return suma_inorder(raiz.izq) + raiz.val + suma_inorder(raiz.der)
+
+# Crear un árbol de ejemplo
+raiz = Nodo(10)
+raiz.izq = Nodo(5)
+raiz.der = Nodo(15)
+raiz.izq.izq = Nodo(3)
+raiz.izq.der = Nodo(7)
+raiz.der.izq = Nodo(12)
+raiz.der.der = Nodo(18)
+
+# Calcular la suma de los valores de los nodos en inorder
+suma_total = suma_inorder(raiz)
+print(f"La suma total de los valores en el árbol es: {suma_total}")  # Salida esperada: 70
