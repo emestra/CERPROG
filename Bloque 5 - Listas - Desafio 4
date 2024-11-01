@@ -1,0 +1,17 @@
+# Desafio 4
+
+# Programa para sumar elementos de dos listas en posiciones correspondientes
+def sumar_listas(lista1, lista2):
+    longitud_max = max(len(lista1), len(lista2))
+    suma = [0] * longitud_max
+    for i in range(longitud_max):
+        if i < len(lista1):
+            suma[i] += lista1[i]
+        if i < len(lista2):
+            suma[i] += lista2[i]
+    return suma
+
+# Ejemplo de uso
+lista1 = [1, 2, 3]
+lista2 = [4, 5]
+print("Suma de las listas:", sumar_listas(lista1, lista2))
