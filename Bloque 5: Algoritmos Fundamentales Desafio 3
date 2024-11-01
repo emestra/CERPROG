@@ -1,0 +1,27 @@
+# Desafio 3
+
+# Lista ordenada de nombres de estudiantes
+estudiantes = ["Ana", "Carlos", "Juan", "Luis", "María"]
+
+# Función de búsqueda binaria
+def busqueda_binaria(estudiantes, nombre_buscar):
+    bajo = 0
+    alto = len(estudiantes) - 1
+
+    while bajo <= alto:
+        medio = (bajo + alto) // 2
+        if estudiantes[medio] == nombre_buscar:
+            return medio  # Estudiante encontrado
+        elif estudiantes[medio] < nombre_buscar:
+            bajo = medio + 1
+        else:
+            alto = medio - 1
+
+    return -1  # Estudiante no encontrado
+
+# Buscar el estudiante "Luis"
+resultado = busqueda_binaria(estudiantes, "Luis")
+if resultado != -1:
+    print(f"Estudiante encontrado en la posición: {resultado}")
+else:
+    print("Estudiante no encontrado")
