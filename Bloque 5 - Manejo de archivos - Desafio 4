@@ -1,0 +1,14 @@
+# Desafio 4 
+
+def eliminar_prestamo(nombre_libro):
+    prestamos = []
+    with open("prestamos.txt", "r") as archivo:
+        prestamos = archivo.readlines()
+    
+    with open("prestamos.txt", "w") as archivo:
+        for prestamo in prestamos:
+            if nombre_libro not in prestamo:
+                archivo.write(prestamo)
+
+# Ejemplo de uso
+eliminar_prestamo("El Señor de los Anillos")
