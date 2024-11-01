@@ -1,0 +1,13 @@
+# Desafio 2 
+
+# Programa para buscar un código de producto en una lista
+def buscar_codigo(lista, codigo):
+    if codigo in lista:
+        return f"El código {codigo} se encuentra en la posición {lista.index(codigo)}."
+    else:
+        return "Código no encontrado."
+
+# Ejemplo de uso
+lista_codigos = ["A123", "B456", "C789", "D012"]
+codigo = input("Introduce el código de producto: ")
+print(buscar_codigo(lista_codigos, codigo))
