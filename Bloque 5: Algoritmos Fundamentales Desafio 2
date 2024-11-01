@@ -1,0 +1,21 @@
+# Matriz de calificaciones (filas: estudiantes, columnas: materias)
+calificaciones = [
+    [85, 90, 78],  # Estudiante 1
+    [88, 92, 80],  # Estudiante 2
+    [84, 85, 88]   # Estudiante 3
+]
+
+# Función de búsqueda secuencial
+def buscar_calificacion(calificaciones, calificacion_buscar):
+    for i, estudiante in enumerate(calificaciones):
+        for j, calificacion in enumerate(estudiante):
+            if calificacion == calificacion_buscar:
+                return (i, j)  # Retorna el índice del estudiante y la materia
+    return None  # Calificación no encontrada
+
+# Buscar la calificación 92
+resultado = buscar_calificacion(calificaciones, 92)
+if resultado:
+    print(f"Calificación encontrada en el estudiante {resultado[0] + 1}, materia {resultado[1] + 1}")
+else:
+    print("Calificación no encontrada")
