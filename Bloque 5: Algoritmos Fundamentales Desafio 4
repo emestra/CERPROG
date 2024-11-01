@@ -1,0 +1,20 @@
+# Desafio 4
+
+# Lista de estudiantes y sus promedios
+estudiantes = [("Ana", 85), ("Carlos", 90), ("Juan", 78), ("Luis", 88), ("María", 92)]
+
+# Función de ordenamiento por selección
+def ordenamiento_seleccion(estudiantes):
+    n = len(estudiantes)
+    for i in range(n):
+        max_idx = i
+        for j in range(i + 1, n):
+            if estudiantes[j][1] > estudiantes[max_idx][1]:
+                max_idx = j
+        estudiantes[i], estudiantes[max_idx] = estudiantes[max_idx], estudiantes[i]
+
+# Ordenar la lista de estudiantes por promedio
+ordenamiento_seleccion(estudiantes)
+print("Estudiantes ordenados por promedio:")
+for estudiante in estudiantes:
+    print(estudiante)
