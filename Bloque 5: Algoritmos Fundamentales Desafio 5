@@ -1,0 +1,38 @@
+# Desafio 5
+
+class Nodo:
+    def __init__(self, nombre, promedio):
+        self.nombre = nombre
+        self.promedio = promedio
+        self.izq = None
+        self.der = None
+
+# Función para insertar en el árbol binario de búsqueda
+def insertar(raiz, nombre, promedio):
+    if raiz is None:
+        return Nodo(nombre, promedio)
+    else:
+        if promedio < raiz.promedio:
+            raiz.izq = insertar(raiz.izq, nombre, promedio)
+        else:
+            raiz.der = insertar(raiz.der, nombre, promedio)
+    return raiz
+
+# Función para recorrer el árbol en inorden
+def inorden(raiz):
+    if raiz:
+        inorden(raiz.izq)
+        print(f"{raiz.nombre}: {raiz.promedio}")
+        inorden(raiz.der)
+
+# Lista de estudiantes y sus promedios
+estudiantes = [("Ana", 85), ("Carlos", 90), ("Juan", 78), ("Luis", 88), ("María", 92)]
+
+# Crear el árbol binario de búsqueda
+raiz = None
+for nombre, promedio in estudiantes:
+    raiz = insertar(raiz, nombre, promedio)
+
+# Recorrer el árbol en inorden
+print("Estudiantes en orden ascendente de rendimiento académico:")
+inorden(raiz)
