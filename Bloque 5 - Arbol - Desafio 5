@@ -1,0 +1,47 @@
+class Nodo:
+    def __init__(self, val):
+        self.val = val
+        self.izq = None
+        self.der = None
+
+def construir_arbol_expresion(expresion):
+    def es_operador(c):
+        return c in '+-*/'
+
+    def construir_arbol(tokens):
+        stack = []
+        for token in tokens:
+            if not es_operador(token):
+                nodo = Nodo(int(token))
+                stack.append(nodo)
+            else:
+                nodo = Nodo(token)
+                nodo.der = stack.pop()
+                nodo.izq = stack.pop()
+                stack.append(nodo)
+        return stack[0]
+
+    tokens = expresion.split()
+    return construir_arbol(tokens)
+
+def evaluar_arbol(raiz):
+    if raiz is None:
+        return 0
+    if raiz.izq is None and raiz.der is None:
+        return raiz.val
+    izq_valor = evaluar_arbol(raiz.izq)
+    der_valor = evaluar_arbol(raiz.der)
+    if raiz.val == '+':
+        return izq_valor + der_valor
+    elif raiz.val == '-':
+        return izq_valor - der_valor
+    elif raiz.val == '*':
+        return izq_valor * der_valor
+    elif raiz.val == '/':
+        return izq_valor / der_valor
+
+# Prueba del programa con la expresión "5 + 3 * 4"
+expresion = "5 3 4 * +"
+arbol_expresion = construir_arbol_expresion(expresion)
+resultado = evaluar_arbol(arbol_expresion)
+print(f"El resultado de la expresión '{expresion}' es: {resultado}")  # Salida esperada: 17
