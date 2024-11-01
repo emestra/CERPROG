@@ -1,0 +1,19 @@
+# Desafio 3 
+
+import csv
+
+def actualizar_inventario(nombre_archivo, titulo_libro, nuevas_copias):
+    filas = []
+    with open(nombre_archivo, "r") as archivo_csv:
+        lector_csv = csv.reader(archivo_csv)
+        for fila in lector_csv:
+            if fila[0] == titulo_libro:
+                fila[2] = nuevas_copias
+            filas.append(fila)
+    
+    with open(nombre_archivo, "w", newline="") as archivo_csv:
+        escritor_csv = csv.writer(archivo_csv)
+        escritor_csv.writerows(filas)
+
+# Ejemplo de uso
+actualizar_inventario("inventario.csv", "El Hobbit", "10")
