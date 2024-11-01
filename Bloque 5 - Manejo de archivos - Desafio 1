@@ -1,0 +1,8 @@
+#Desafio 1
+
+def agregar_prestamo(nombre_libro, nombre_prestatario, fecha_prestamo):
+    with open("prestamos.txt", "a") as archivo:
+        archivo.write(f"{nombre_libro}, {nombre_prestatario}, {fecha_prestamo}\n")
+
+# Ejemplo
+agregar_prestamo("El Señor de los Anillos", "Juan Pérez", "28-10-2024")
