@@ -1,6 +1,6 @@
 # Desafio 1
 
-# Programa para encontrar el mayor de tres números
+
 def encontrar_mayor(a, b, c):
     if a == b == c:
         return "Todos los números son iguales."
